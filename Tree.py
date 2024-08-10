@@ -54,18 +54,18 @@ class Tree:
                     if atual.esq != None and atual.dir == None: # tem filho a esquerda 
                         if anterior.item > v: # verificar para qual lado esta o no que quero remover
                             anterior.esq = atual.esq
+                        if anterior.item < v:
+                            anterior.dir = atual.esq
                         if anterior.item == v: # se a raiz tiver apenas um filho a esquerda
                             self.root = atual.esq
-                        else:
-                            anterior.dir = atual.esq
                         return
                     if atual.dir != None and atual.esq == None: # tem filho a direita
                         if anterior.item > v: # verificar para qual lado esta o no que quero remover
                             anterior.esq = atual.dir
+                        if anterior.item < v:
+                            anterior.dir = atual.dir
                         if anterior.item == v: # se a raiz tiver apenas um filho a direita
                             self.root = atual.dir
-                        else:
-                            anterior.dir = atual.dir
                         return
                     if atual.dir != None and atual.esq != None:  # tem os dois filhos
                         # variaveis auxiliares: menorNo, anteriorDoMenor, proximoDir
@@ -132,6 +132,7 @@ Tree.inserir(71)
 Tree.inserir(76)
 Tree.inserir(93)
 Tree.inserir(97)
+Tree.inserir(10)
 
 Tree.preOrder(Tree.root)
 print("\n")
